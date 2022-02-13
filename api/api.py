@@ -66,8 +66,8 @@ def get_selected_questions(q1_num, q2_num):
 #     questions, history = random_question_selector(filtered_questions, history)
 #     return {'questions': questions}
 
-@app.route('/codingform')
-# @cross_origin()
+@app.route('/codingform', methods=['POST'])
+@cross_origin()
 def CodingForm():
     return {'questions': get_selected_questions(random.randint(1,18),random.randint(1,18))}
 
