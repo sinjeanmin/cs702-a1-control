@@ -11,15 +11,21 @@ import {
 // import TransferList from "./inputs/TransferList";
 
 import "../App.css";
-// import APIService from "../api/APIService";
+import APIService from "../api/APIService";
 
-const Form = () => {
+const Form = (props) => {
   // const [selected, setSelected] = React.useState([]);
   // const [difficulty, setDifficulty] = React.useState([false, false, false]);
+  const [counter, setCounter] = React.useState(0);
+  const questionsHandler = props.questionsHandler;
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    // TODO - upon pressing button how to call 
+    setCounter(counter + 1);
+    APIService.submitForm({}).then(response => {
+        console.log(response);
+        questionsHandler(response.questions);
+    });
   };
 
   // const handleOnChange = (selectedDifficulty) => {
@@ -69,6 +75,7 @@ const Form = () => {
             <Button sx={{ mt: 1, mr: 1 }} type="submit" variant="outlined">
               Generate
             </Button>
+            <FormLabel>You have pressed 'Generate' {counter} times</FormLabel>
           </FormControl>
         </form>
       </CardContent>

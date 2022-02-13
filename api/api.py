@@ -69,10 +69,3 @@ def get_selected_questions(q1_num, q2_num):
 @app.route('/codingform', methods=['POST'])
 def CodingForm():
     return {'questions': get_selected_questions(random.randint(1,18),random.randint(1,18))}
-
-# Description:
-# This is a personal coding trainer to prepare for technical interviews. Questions here are submitted by interviewees of Meta, Amazon and Google. Similar to the real interview, you will be given 60 minutes to complete 2 coding questions of different difficulty level.
-
-# Constraints:
-# 1) There must be at least 2 difficulty level selected from Easy, Medium, Hard. 
-# 2) You can choose up to 2 companies to train with. This means Q1 will be from company A, and Q2 from company B. 

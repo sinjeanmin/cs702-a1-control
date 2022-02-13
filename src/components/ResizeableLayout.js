@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Highlight from "react-highlight";
 import { Responsive, WidthProvider } from "react-grid-layout";
-import { Box, Tab, Tabs, Typography } from '@mui/material';
+import { Box, Divider, Tab, Tabs, Typography } from '@mui/material';
 
 import '../App.css';
 import "../../node_modules/react-grid-layout/css/styles.css";
@@ -44,9 +44,14 @@ function a11yProps(index) {
     };
 }
 
-const ResizeableLayout = () => {
+function capitalize(s) {
+    return s[0].toUpperCase() + s.slice(1);
+}
+
+const ResizeableLayout = (props) => {
     const [showMessage, setShowMessage] = React.useState(false);
     const [value, setValue] = React.useState(0);
+    const questions = props.questions;
 
     const handleChange = (event, newValue) => {
         setValue(newValue);
@@ -56,7 +61,7 @@ const ResizeableLayout = () => {
         setShowMessage(!showMessage);
     };
 
-    return (
+    return questions.length > 0 && (
         <ResponsiveGridLayout
             className="layout"
             rowHeight={150}
@@ -76,18 +81,18 @@ const ResizeableLayout = () => {
                     </Tabs>
                 </Box>
                 <TabPanel value={value} index={0}>
-                Write a Python program to print the following string in a specific
-                            format (see the output). Sample String: "Twinkle, twinkle, little
-                            star, How I wonder what you are! Up above the world so high, Like
-                            a diamond in the sky. Twinkle, twinkle, little star, How I wonder
-                            what you are!"
+                    {questions[0].question}
+                    <Divider />
+                    {capitalize(questions[0].difficulty)}
+                    <Divider />
+                    {questions[0].description}
                 </TabPanel>
                 <TabPanel value={value} index={1}>
-                Write a Python program to print the following string in a specific
-                            format (see the output). Sample String: "Twinkle, twinkle, little
-                            star, How I wonder what you are! Up above the world so high, Like
-                            a diamond in the sky. Twinkle, twinkle, little star, How I wonder
-                            what you are!"
+                    {questions[1].question}
+                    <Divider />
+                    {capitalize(questions[1].difficulty)}
+                    <Divider />
+                    {questions[1].description}
                 </TabPanel>
             </div>
 
