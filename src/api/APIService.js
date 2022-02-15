@@ -1,7 +1,10 @@
 export default class APIService {
 
   static submitForm(body) {
-    return fetch(`http://127.0.0.1:5000/codingform`, {
+    // return fetch(`http://localhost:5000/codingform`, {
+    //remember to do EXPORT PORT=3000 back to original for reactjs
+    //remember to change package.json back to 5000 also
+    return fetch(`http://localhost:1234/codingform`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

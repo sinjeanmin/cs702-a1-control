@@ -67,5 +67,6 @@ def get_selected_questions(q1_num, q2_num):
 #     return {'questions': questions}
 
 @app.route('/codingform', methods=['POST'])
+@cross_origin()
 def CodingForm():
     return {'questions': get_selected_questions(random.randint(1,18),random.randint(1,18))}

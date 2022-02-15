@@ -1,0 +1,13 @@
+services:
+  api:
+    build:
+      context: .
+      dockerfile: Dockerfile.api
+    image: cs702-a1-control-api
+  client:
+    build:
+      context: .
+      dockerfile: Dockerfile.client
+    image: cs701-a1-control-client
+    ports:
+      - "3000:80"
